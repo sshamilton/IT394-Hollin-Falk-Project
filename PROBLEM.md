@@ -1,5 +1,5 @@
-### Problem Statement
-# by CDTs Falk & Hollin
+# Problem Statement
+### by CDTs Falk & Hollin
 # 
 ##   The problem that we plan to address with our project is that the 
 ## popular application Jodel, which is commonly used by service 
