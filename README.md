@@ -6,3 +6,6 @@
 ## Members: CDT Christian Falk and CDT Orion Hollin
 
 ### See our Problem Statement: [Problem Statement](problem.md)
+
+### This is our Model:
+[App Model](appmodel.png)
