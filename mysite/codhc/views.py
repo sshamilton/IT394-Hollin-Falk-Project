@@ -10,6 +10,6 @@ from .models import Post, Comment
 # Create your views here.
 
 def index(request):
-    latest_post_list = Post.objects.filter(pub_date__lte=timezone.now()).order_by('-created_at')[:5]
+    latest_post_list = Post.objects.filter(created_at=timezone.now()).order_by('-created_at')[:5]
     context = {'latest_post_list': latest_post_list}
     return render(request, 'codhc/index.html', context)
