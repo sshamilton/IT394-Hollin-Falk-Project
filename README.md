@@ -1,5 +1,1 @@
-# IT394-Hollin-Falk-Project
-
-create a forum application using django site:steemit.com
-
-google the above^^^^^
+# Conversion test from in class Django tutorials to project format

@@ -1,0 +1,12 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'codhc/style.css' %}">
+
+{% if latest_post_list %}
+    <ul>
+    {% for post in latest_post_list %}
+    <li><a href="{% url 'codhc:detail' post.id %}">{{ post.post_title }}</a></li>    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts are available.</p>
+{% endif %}

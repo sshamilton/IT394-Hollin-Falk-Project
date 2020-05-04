@@ -1,0 +1,8 @@
+li a {
+    color: green;
+}
+
+body {
+    background:black url("images/DS9_05.png") no-repeat;
+    background-size: cover;
+}
