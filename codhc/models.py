@@ -13,7 +13,8 @@ class Post(models.Model):
     post_text = models.TextField()
     pub_date = models.DateTimeField('date published', null=True)
     def __str__(self):
-        return self.post_text, self.title, self.score, self.pub_date, self.user
+        template = '{0.post_text}{0.user}{0.score}{0.title}{0.pub_date}'
+        return template.format(self)
 
 
 #comment class
@@ -24,4 +25,5 @@ class Comment(models.Model):
     comment_text = models.TextField()
     pub_date = models.DateTimeField('date published', null=True)
     def __str__(self):
-        return self.comment_text, self.user, self.post, self.score, self.pub_date
+        template = '{0.comment_text}{0.user}{0.post}{0.score}{0.pub_date}'
+        return template.format(self)
