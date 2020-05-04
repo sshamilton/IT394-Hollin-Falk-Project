@@ -1,3 +1,6 @@
+{% load static %}
+<!DOCTYPE HTML>
+
 <h1>{{ post.title }}</h1>
 <h3>{{ post.post_text }}</h3>
 
@@ -8,9 +11,9 @@
 <button type="submit" name="button">Submit!</button>
 </form>
 
-<h1>Comment ModelForm</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <div class="p-3 mb-2 bg-secondary text-white">
+    {% block comment_content %}
+    {% endblock %}
+    </div>
+</div>

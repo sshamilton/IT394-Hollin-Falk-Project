@@ -1,4 +1,6 @@
+{% extends 'codhc/base_generic.html' %}
 {% load static %}
+{% block all_content %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'codhc/style.css' %}">
 
@@ -10,3 +12,5 @@
 {% else %}
     <p>No posts are available.</p>
 {% endif %}
+
+{% endblock %}

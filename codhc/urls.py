@@ -6,5 +6,6 @@ app_name = 'codhc'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:post_id>/', views.detail, name='detail'),
-    #path('<int:post_id>/results/', views.results, name='results'),
+    path('addcomment', views.addcomment, name='addcomment'),
+    path('addpost', views.addpost, name='addpost'),
 ]

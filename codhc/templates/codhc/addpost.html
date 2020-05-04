@@ -1,0 +1,21 @@
+{% extends 'codhc/details.html' %}
+{% block post_content %}
+
+<form action="add" method="post">
+    {% csrf_token %}
+    
+    {% for field in form %}
+    <div class="row">
+        <div class="col-sm">    
+            <b>{{ field.label_tag }}</b>:
+        </div>
+        <div class="col-sm">
+            {{ field }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

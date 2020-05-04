@@ -14,12 +14,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField('date published', null=True)
     def __str__(self):
         return self.post_text, self.title, self.score, self.pub_date, self.user
-    def was_published_recently(self):
-        now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.pub_date <= now
-    was_published_recently.admin_order_field = 'pub_date'
-    was_published_recently.boolean = True
-    was_published_recently.short_description = 'Published recently?'
+
 
 #comment class
 class Comment(models.Model):
@@ -30,9 +25,3 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('date published', null=True)
     def __str__(self):
         return self.comment_text, self.user, self.post, self.score, self.pub_date
-    def was_published_recently(self):
-        now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.pub_date <= now
-    was_published_recently.admin_order_field = 'pub_date'
-    was_published_recently.boolean = True
-    was_published_recently.short_description = 'Published recently?'
