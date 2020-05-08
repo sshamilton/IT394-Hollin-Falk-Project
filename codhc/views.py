@@ -26,7 +26,10 @@ def addcomment(request):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            newcomment = form.save()
+            
+            newcomment = form.save(commit=False)
+            newcomment.user = request.user
+            newcomment.save()
             return HttpResponseRedirect('/')
     else:
         form=CommentForm()
@@ -38,7 +41,10 @@ def addpost(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            newpost = form.save()
+            newpost = form.save(commit = False)
+            newpost.user = request.user
+            newpost.save()
+            
             return HttpResponseRedirect('/')
     else:
         form = PostForm()

@@ -28,7 +28,7 @@
 
 
 <h1>{{ post.title }}</h1>
-<p>Posted by: {{ post.user }} (Score: {{ post.score }})</p>
+<p>Posted by: {{ post.user }} (On: {{ post.pub_date }})</p>
 <h3>{{ post.post_text }}</h3>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -42,7 +42,7 @@
     <ul>
     {% for comment in comment_list %}
     <li>{{ comment.comment_text }}</li>
-    <p> Posted by: {{ comment.user }} (Score: {{ comment.score }})</p> <br></br>  {% endfor %}
+    <p> Posted by: {{ comment.user }} (On: {{ comment.pub_date }})</p> <br></br>  {% endfor %}
     </ul>
 {% else %}
     <p>No comments are available.</p>

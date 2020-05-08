@@ -7,10 +7,11 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
+        exclude = ['score', 'user']
 
 #Create the cadet form class
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
         #fields = '__all__'
-        exclude = ['score']
+        exclude = ['score', 'user']
