@@ -39,7 +39,7 @@ def addpost(request):
         form = PostForm(request.POST)
         if form.is_valid():
             newpost = form.save()
-            return HttpResponseRedirect('/codhc')
+            return HttpResponseRedirect('/')
     else:
         form = PostForm()
     return render(request, 'codhc/addpost.html', {'form':form})
