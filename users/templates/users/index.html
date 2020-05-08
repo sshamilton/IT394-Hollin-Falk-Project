@@ -1,0 +1,29 @@
+{% extends 'users/base_generic.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<p>Welcome, {{ user.get_username }}.  
+<a href="{% url 'logout' %}">Log Out</a>
+{% else %}
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}
+<p>
+<h2>Cadet List</h2>
+
+{% if cadets %} <!-- check if list is full or empty -->
+<ul>
+
+  {% for cadet in cadets %}
+      <li><a href="./{{cadet.id}}">{{cadet.name}}</a> {{cadet.company}}</li>
+  {% endfor %}
+
+</ul>
+{% else %}
+<p>No cadets in database</p>
+{% endif %}
+
+{% if user.is_authenticated and perms.user.add_cadet %}
+<a href="add">Add cadet to database</a>
+{% endif %}
+</p>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+
+{% extends 'users/base_generic.html' %}
+{% block content %}
+{% if user.is_authenticated and perms.user.add_cadet %}
+<form action="add" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% else %}
+Sorry, you do not have access to add cadets
+
+{% endif %}
+
+{% endblock %}
+

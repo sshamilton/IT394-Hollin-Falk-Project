@@ -1,0 +1,27 @@
+<h1>{{ cadet.name }}</h1>
+
+<ul>
+   <li>Xnumber: {{ cadet.xnumber }}</li>
+   <li>Company: {{ cadet.company.shortname}}-{{ cadet.company.regiment}}</li>
+
+<br />
+Now we add a form to edit the cadet's properties.
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'users:update' cadet.id %}" method="post">
+{% csrf_token %} 
+<input type="text" name="xnumber" value="{{cadet.xnumber}}" />
+<select name="company_id">
+    {% for company in companies %}
+    
+    <option value="{{company.id}}" 
+    {% if cadet.company.id == company.id %} 
+     selected
+    {% endif %}
+
+    >{{company}}</option>
+    {% endfor %}
+</select>
+<input type="submit" value="Update cadet" />
+</form>
+</ul>
+
