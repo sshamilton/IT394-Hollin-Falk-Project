@@ -34,12 +34,10 @@
 <a  href="{% url 'codhc:addcomment' %}"><button type="submit" name="button">Leave a Comment</button></a>
 
 {% block comment_content %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'codhc/style.css' %}">
-
-{% if context %}
+<h4>Comments on this Post:</h4>
+{% if comment_list %}
     <ul>
-    {% for comment in context %}
+    {% for comment in comment_list %}
     <li>{{ comment.comment_text }}</li>    {% endfor %}
     </ul>
 {% else %}

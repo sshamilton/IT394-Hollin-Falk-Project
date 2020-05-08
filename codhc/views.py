@@ -16,13 +16,9 @@ def index(request):
     return render(request, 'codhc/index.html', context)
 
 def detail(request, post_id):
-    latest_comment_list = Comment.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
-    context = {'latest_comment_list': latest_comment_list}
-    try:
-        post = Post.objects.get(pk=post_id, pub_date__lte=timezone.now())
-    except Post.DoesNotExist:
-        raise Http404("Post does not exist")
-    return render(request, 'codhc/detail.html', {'post': post, 'context':context})
+    post = Post.objects.get(pk=post_id, pub_date__lte=timezone.now())
+    comment_list = Comment.objects.filter(post=post_id).order_by('pub_date')[:10]
+    return render(request, 'codhc/detail.html', {'post': post, 'comment_list':comment_list})
 
 #add comment view for a seperate page
 def addcomment(request):
