@@ -11,7 +11,7 @@ class Post(models.Model):
     score = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     post_text = models.TextField()
-    pub_date = models.DateTimeField('date published', null=True)
+    pub_date = models.DateTimeField('date published', auto_now_add=True, null=False)
     def __str__(self):
         template = '{0.post_text}{0.user}{0.score}{0.title}{0.pub_date}'
         return template.format(self)
@@ -23,7 +23,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
     comment_text = models.TextField()
-    pub_date = models.DateTimeField('date published', null=True)
+    pub_date = models.DateTimeField('date published', auto_now_add=True, null=False)
     def __str__(self):
         template = '{0.comment_text}{0.user}{0.post}{0.score}{0.pub_date}'
         return template.format(self)
