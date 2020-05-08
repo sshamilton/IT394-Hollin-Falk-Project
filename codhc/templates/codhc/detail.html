@@ -26,19 +26,20 @@
 
 
 <h1>{{ post.title }}</h1>
+<p>Posted by: {{ post.user }} , Score: {{ post.score }}</p>
 <h3>{{ post.post_text }}</h3>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-
-<a  href="{% url 'codhc:addcomment' %}"><button type="submit" name="button">Leave a Comment</button></a>
+<br></br>
 
 {% block comment_content %}
 <h4>Comments on this Post:</h4>
+<a  href="{% url 'codhc:addcomment' %}"><button type="submit" name="button">Leave a Comment</button></a>
 {% if comment_list %}
     <ul>
     {% for comment in comment_list %}
-    <li>{{ comment.comment_text }}</li>    {% endfor %}
+    <li>{{ comment.comment_text }} posted by: {{ comment.user }} score = {{ comment.score }} </li>    {% endfor %}
     </ul>
 {% else %}
     <p>No comments are available.</p>
