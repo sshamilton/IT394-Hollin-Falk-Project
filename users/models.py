@@ -1,3 +1,6 @@
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
 from django.db import models
 
 class Company(models.Model):
@@ -20,4 +23,3 @@ class Cadet(models.Model):
         return (self.last + ", " + self.first)
     def __str__(self):
         return (self.last + ", " + self.first)
-
