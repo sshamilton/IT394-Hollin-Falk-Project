@@ -19,5 +19,12 @@ class PostAdmin (admin.ModelAdmin):
     list_filter = ['pub_date']
     search_fields = ['title']
 
+class CommentAdmin (admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['user', 'post']}),
+        (None,               {'fields': ['pub_date', 'score']}),
+        ('Comment Text', {'fields': ['comment_text']}),
+    ]
 
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment, CommentAdmin)
