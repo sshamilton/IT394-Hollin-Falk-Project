@@ -5,6 +5,8 @@ from .models import Company
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 from .forms import CadetForm
 from .forms import CompanyForm
 
@@ -64,13 +66,12 @@ def addcompany(request):
     return render(request, 'users/addcompany.html', {'form': form})
 
 def adduser(request):
-    if request.method == 'POST':
-        form = User(request.POST)
-        if form():
-            #Add the company to the database
-            newuser = user.save()
-            #Go back to cadet list
-            return HttpResponseRedirect('/index')
-    else:
-        form = User()
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+        form.save()
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        return HttpResponseRedirect('/users')
     return render(request, 'users/add.html', {'form': form})
