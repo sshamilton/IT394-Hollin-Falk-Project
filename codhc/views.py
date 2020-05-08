@@ -27,7 +27,7 @@ def addcomment(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             newcomment = form.save()
-            return HttpResponseRedirect('/codhc')
+            return HttpResponseRedirect('/')
     else:
         form=CommentForm()
     return render(request, 'codhc/addcomment.html', {'form':form})
