@@ -10,8 +10,8 @@ from .forms import CompanyForm
 
 # Create your views here.
 def index(request):
-    cadets = Cadet.objects.all() #Grab all cadets from database
-    context = {'cadets': cadets} #fill a context with the cadet list
+    users = User.objects.all() #all django registered users
+    context = {'users': users} #fill a context with the cadet list
     template = loader.get_template('users/index.html') #Get the template we created
     return HttpResponse(template.render(context, request)) #Render the template with the context
 
@@ -36,29 +36,20 @@ def update(request, cadet_id):
     return render(request, 'users/detail.html', context)
 
 def addcadet(request):
-    if request.user.is_authenticated:
-        if request.user.has_perm('user.add_cadet'):
-            print("add perm found")
-        else:
-            print("no perm found")
-            dir(request.user)
-        if request.method == 'POST':
-            form = CadetForm(request.POST)
-            if form.is_valid():
-                #Add the cadet to the database
-                newcadet = form.save()
-                #Go back to cadet list
-                return HttpResponseRedirect('/users')
+    if request.method == 'POST':
+        form = CadetForm(request.POST)
+        if form.is_valid():
+            #Add the cadet to the database
+            newcadet = form.save()
+            #Go back to cadet list
+            return HttpResponseRedirect('/index')
         else:
             form = CadetForm()
-        return render(request, 'users/add.html', {'form': form})
-        #else:
-            #return HttpResponseRedirect('/users')
-
+            return render(request, 'users/add.html', {'form': form})
     else:
-        print("user not authenticated")
         return (HttpResponse("You are not allowed to add cadets"))
 
+        
 def addcompany(request):
     #if user.has_perm('cadet.add_cadet'):
     if request.method == 'POST':
@@ -71,3 +62,15 @@ def addcompany(request):
     else:
         form = CompanyForm()
     return render(request, 'users/addcompany.html', {'form': form})
+
+def adduser(request):
+    if request.method == 'POST':
+        form = User(request.POST)
+        if form():
+            #Add the company to the database
+            newuser = user.save()
+            #Go back to cadet list
+            return HttpResponseRedirect('/index')
+    else:
+        form = User()
+    return render(request, 'users/add.html', {'form': form})
