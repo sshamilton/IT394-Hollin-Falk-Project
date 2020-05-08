@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:post_id>/', views.detail, name='detail'),
     path('addcomment', views.addcomment, name='addcomment'),
-    path('addpost', views.addpost, name='addpost'),
+    path('add', views.addpost, name='addpost'),
 ]
