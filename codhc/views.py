@@ -43,3 +43,8 @@ def addpost(request):
     else:
         form = PostForm()
     return render(request, 'codhc/addpost.html', {'form':form})
+
+
+    
+
+
