@@ -1,7 +1,15 @@
-# Django Forms and Templates
-Sample Django app for educational use.
+# IT394-Hollin-Falk-Project
 
-This app demonstrates basic form and model use in Django.
-Writing on same line to force a merge conflict.  Try to get both lines here!
-Test change of line 6 on Readme.
-Test Line for merge conflict.
+## Group Name: Call of Duty, Honor, Country
+
+## Members: CDT Christian Falk and CDT Orion Hollin
+
+### See our Problem Statement: [Problem Statement](problem.md)
+
+### This is our Model:
+[App Model](appmodel.png)
+
+### superuser for admin site testing is:
+### u: admin pw: cisco
+### password for all other accounts is:
+### pw: bigcisco
