@@ -4,7 +4,7 @@
 
 ## Members: CDT Christian Falk and CDT Orion Hollin
 
-### See our Problem Statement: [Problem Statement](problem.md)
+### See our Problem Statement: [Problem Statement](PROBLEM.md)
 
 ### This is our Model:
 [App Model](appmodel.png)
