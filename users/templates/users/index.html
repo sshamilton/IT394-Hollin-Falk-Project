@@ -1,0 +1,26 @@
+{% extends 'users/base_generic.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<p>Welcome, {{ user.get_username }}.  
+<a href="{% url 'logout' %}">Log Out</a>
+{% else %}
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}
+<p>
+    
+    
+    {% if users %} <!-- check if list is full or empty -->
+    <ul>
+        <h3>User List:</h3>
+      {% for user in users %}
+          <li>{{ user }}</li>
+      {% endfor %}
+    
+    </ul>
+    {% else %}
+    <p>No users in database</p>
+    {% endif %}
+    
+    <a href="add">Add User Account</a>
+    </p>
+{% endblock %}

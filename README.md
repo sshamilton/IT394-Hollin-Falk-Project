@@ -8,3 +8,8 @@
 
 ### This is our Model:
 [App Model](appmodel.png)
+
+### superuser for admin site testing is:
+### u: admin pw: cisco
+### password for all other accounts is:
+### pw: bigcisco

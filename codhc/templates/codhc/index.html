@@ -1,0 +1,16 @@
+{% extends 'codhc/base_generic.html' %}
+{% load static %}
+{% block all_content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'codhc/style.css' %}">
+<h2>Post Dashboard</h2>
+{% if latest_post_list %}
+    <ul>
+    {% for post in latest_post_list %}
+    <li><a href="{% url 'codhc:detail' post.id %}">{{ post.title }}</a></li>    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts are available.</p>
+{% endif %}
+
+{% endblock %}
