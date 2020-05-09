@@ -8,12 +8,11 @@ from django.conf import settings
 #post class
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    score = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     post_text = models.TextField()
-    pub_date = models.DateTimeField('date published', auto_now_add=True, null=False)
+    pub_date = models.DateTimeField('date published', auto_now_add=True, null=True)
     def __str__(self):
-        template = '{0.post_text}{0.user}{0.score}{0.title}{0.pub_date}'
+        template = '{0.post_text}{0.user}{0.title}{0.pub_date}'
         return template.format(self)
 
 
@@ -21,9 +20,8 @@ class Post(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    score = models.IntegerField(default=0)
     comment_text = models.TextField()
-    pub_date = models.DateTimeField('date published', auto_now_add=True, null=False)
+    pub_date = models.DateTimeField('date published', auto_now_add=True, null=True)
     def __str__(self):
-        template = '{0.comment_text}{0.user}{0.post}{0.score}{0.pub_date}'
+        template = '{0.comment_text}{0.user}{0.post}{0.pub_date}'
         return template.format(self)

@@ -11,18 +11,12 @@ class CommentInline(admin.TabularInline):
 class PostAdmin (admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['user', 'title']}),
-        (None,               {'fields': ['pub_date', 'score']}),
         ('Post Text', {'fields': ['post_text']}),
     ]
-    inlines = [CommentInline]
-    list_display = ('title', 'pub_date',)
-    list_filter = ['pub_date']
-    search_fields = ['title']
 
 class CommentAdmin (admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['user', 'post']}),
-        (None,               {'fields': ['pub_date', 'score']}),
         ('Comment Text', {'fields': ['comment_text']}),
     ]
 
